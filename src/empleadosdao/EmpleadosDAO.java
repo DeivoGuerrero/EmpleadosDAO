@@ -5,17 +5,63 @@
  */
 package empleadosdao;
 
+import empleadosdao.clases.Empleado;
+import empleadosdao.datos.EmpleadoDAO;
+import java.util.List;
+
 /**
  *
  * @author David
  */
 public class EmpleadosDAO {
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        // TODO code application logic here
+    public EmpleadosDAO(){
+        
+    }
+    
+      
+    public List listarEmpleados(){
+        EmpleadoDAO e = new EmpleadoDAO();
+        List empleados  = e.obtenerEmpleados();
+        return empleados;
+    }
+    
+    public void agregarEmpleado(String nombre, int edad){
+        Empleado e = new Empleado();
+        e.setNombre(nombre);
+        e.setEdad(edad);
+        EmpleadoDAO dao = new EmpleadoDAO();
+        dao.agregarEmpleado(e);
+    }
+    
+    public Empleado seleccionarEmpleado(int id){
+        EmpleadoDAO e = new EmpleadoDAO();
+        return e.buscarEmpleado(id);
+    }
+    
+    public Empleado buscarEmpleadoPorNombre(String n){
+        Empleado e = null;
+        List em = listarEmpleados();
+        for(int i = 0; i < em.size(); i++){
+            e = (Empleado) em.get(i);
+            if(e.getNombre().equalsIgnoreCase(n)){
+                return e;
+            }
+        }
+        return e;
+    }
+    
+    public void actualizarEmpleado(String nNombre, int nEdad){
+        Empleado e = new Empleado();
+        e.setNombre(nNombre);
+        e.setEdad(nEdad);
+        EmpleadoDAO dao = new EmpleadoDAO();
+        dao.actualizarEmpleado(e);
+    }
+    
+    public void eliminarEmpleado(int id){
+        EmpleadoDAO dao = new EmpleadoDAO();
+        dao.eliminarEmpleado(id);
     }
     
 }
