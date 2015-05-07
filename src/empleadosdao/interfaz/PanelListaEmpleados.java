@@ -30,7 +30,7 @@ public class PanelListaEmpleados extends javax.swing.JPanel {
         
         listaEmpleados = new JList();
         listaEmpleados.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-        listaEmpleados.addListSelectionListener((ListSelectionListener) this);
+        listaEmpleados.addListSelectionListener(null);
         jScrollPane1 = new JScrollPane();
         jScrollPane1.setViewportView(listaEmpleados);
         initComponents();
